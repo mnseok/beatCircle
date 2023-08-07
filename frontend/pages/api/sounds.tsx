@@ -6,7 +6,7 @@ export default function handler(req, res) {
   const soundsFolderPath = path.join(process.cwd(), "public/sounds");
   const soundFiles = fs
     .readdirSync(soundsFolderPath)
-    .filter((file) => file.endsWith(".mp3"));
+    .filter((file) => file.endsWith(".mp3") || file.endsWith(".wav"));
 
   res.status(200).json(soundFiles);
 }

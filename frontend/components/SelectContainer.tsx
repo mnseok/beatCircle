@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const SelectContainer = () => {
   const [soundList, setSoundList] = useState([]);
   const [instrumentButtons, setInstrumentButtons] = useState([]);
+  console.log(soundList);
   useEffect(() => {
     async function fetchSoundList() {
       const response = await fetch("/api/sounds");
