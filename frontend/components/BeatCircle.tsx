@@ -1,5 +1,5 @@
 import BeatButtons from "./BeatButtons";
-import { Round, Wrapper } from "./BeatCircle.styles";
+import { Button, CircleContainer, Round } from "./BeatCircle.styles";
 import { Spinner } from "./Spinner";
 
 export function BeatCircle({
@@ -22,7 +22,7 @@ export function BeatCircle({
         alignItems: "center",
       }}
     >
-      <Wrapper
+      <CircleContainer
         style={{ width: ` ${wrapperSize}px`, height: `${wrapperSize}px` }}
       >
         <Round
@@ -30,17 +30,19 @@ export function BeatCircle({
             width: `${radius * 2}px`,
             height: `${radius * 2}px`,
             border: `${radius * 0.02}px solid #cdcdcd`,
+            top: `${center - radius}px`,
+            left: `${center - radius}px`,
           }}
         ></Round>
         <BeatButtons
           numButtons={numButtons}
           center={center}
           roundRadius={radius}
-          activateButtonIndices={[0, 4, 8, 12]}
+          activateButtonIndices={[0, 3, 6, 9]}
           handleButtonClick={() => {}}
         ></BeatButtons>
         <Spinner radius={radius} angle={angle} center={center} />
-      </Wrapper>
+      </CircleContainer>
     </div>
   );
 }

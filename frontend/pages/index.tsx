@@ -1,21 +1,31 @@
-import { BeatCircle } from "@/components/pages/BeatCircle/BeatCircle";
-import { Button } from "@/components/pages/BeatCircle/BeatCircle.styles";
-import { InstrumentCircle } from "@/components/pages/BeatCircle/InstrumentCircle";
-import fs from "fs";
-import path from "path";
+import { BeatCircle } from "@/components/BeatCircle";
+import { InstrumentCircle } from "@/components/InstrumentCircle";
+import {
+  Body,
+  BodyInstrumentContainer,
+  BodyInstrumentWrapper,
+  InstrumentContainer,
+  SelectContainer,
+} from "@/styles/Body.styles";
+import {
+  Header,
+  HeaderCenter,
+  HeaderLeft,
+  HeaderRight,
+} from "@/styles/Heder.styles";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
-  const radius = 60;
-  const numButtons = 16;
+  const radius = 30;
+  const numButtons = 12;
   const bpm = 120;
   const instruments = [
-    "drumstick",
-    "metronome",
-    "snare",
-    "pop-up",
-    "shooting-sound",
-    "swoosh-sound",
+    // "drumstick",
+    "kick",
+    "snare-drum",
+    "hi-hat",
+    "low-floor-tom",
+    "ride",
   ];
   const [angle, setAngle] = useState(0);
   const prevTimeRef: React.MutableRefObject<number | undefined> = useRef();
@@ -45,55 +55,21 @@ export default function Home() {
       instrument={instrument}
     />
   ));
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <div
-        style={{
-          height: "30vh",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "start",
-          padding: "3vh",
-          border: "1px solid red",
-        }}
-      >
-        <BeatCircle radius={40} numButtons={numButtons} angle={angle} />
-      </div>
-      <div>
-        <div
-          style={{
-            height: "50vh",
-            display: "flex",
-            flexWrap: "wrap",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "start",
-            padding: "5vh",
-            border: "1px solid blue",
-          }}
-        >
-          {circles}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            border: "1px solid purple",
-            height: "30vh",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "5vh",
-              border: "1px solid green",
-            }}
-          ></div>
-        </div>
-      </div>
+      <Header>
+        <HeaderLeft>
+          <BeatCircle radius={20} numButtons={numButtons} angle={angle} />
+        </HeaderLeft>
+        <HeaderCenter></HeaderCenter>
+        <HeaderRight></HeaderRight>
+      </Header>
+
+      <Body>
+        <InstrumentContainer>{circles}</InstrumentContainer>
+        <SelectContainer></SelectContainer>
+      </Body>
     </div>
   );
 }

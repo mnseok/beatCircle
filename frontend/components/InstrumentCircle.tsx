@@ -1,10 +1,17 @@
 import { useState, useRef, useEffect } from "react";
-import { Button, Round, Wrapper, YellowDot } from "./BeatCircle.styles";
+import {
+  Button,
+  CircleContainer,
+  InstrumentCircleContainer,
+  InstrumentText,
+  Round,
+  YellowDot,
+} from "./BeatCircle.styles";
 import React from "react";
 import useSound from "use-sound";
-import { Spinner } from "./Spinner";
-import BeatButton from "./BeatButtons";
+
 import BeatButtons from "./BeatButtons";
+import { Spinner } from "./Spinner";
 
 export function InstrumentCircle({
   radius,
@@ -28,8 +35,7 @@ export function InstrumentCircle({
     } else {
       updatedIndices.push(index);
     }
-
-    setActivateButtonIndices(updatedIndices);
+    setActivateButtonIndices(updatedIndices.sort((a, b) => a - b));
   };
 
   const [isCollided, setIsCollided] = useState<boolean>(false);
@@ -50,21 +56,19 @@ export function InstrumentCircle({
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Wrapper
-        style={{ width: ` ${radius * 2.5}px`, height: `${radius * 2.5}px` }}
+    <InstrumentCircleContainer>
+      <CircleContainer
+        style={{
+          width: ` ${radius * 2.5}px`,
+          height: `${radius * 2.5}px`,
+        }}
       >
         <Round
           style={{
             width: `${roundRadius * 2}px`,
             height: `${roundRadius * 2}px`,
+            top: `${center - roundRadius}px`,
+            left: `${center - roundRadius}px`,
             border: `${roundRadius * 0.02}px solid #cdcdcd`,
           }}
         ></Round>
@@ -76,7 +80,8 @@ export function InstrumentCircle({
           handleButtonClick={handleButtonClick}
         ></BeatButtons>
         <Spinner radius={radius} angle={angle} center={center} />
-      </Wrapper>
-    </div>
+      </CircleContainer>
+      <InstrumentText>{instrument}</InstrumentText>
+    </InstrumentCircleContainer>
   );
 }
