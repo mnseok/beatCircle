@@ -8,7 +8,7 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0px 3vw;
-  border: 1px solid lightgreen;
+  // border: 1px solid lightgreen;
 `;
 
 export const HeaderLeft = styled.div`
@@ -17,17 +17,23 @@ export const HeaderLeft = styled.div`
   display: flex;
   flex-direction: row;
   // padding: 0px 3vw;
-  border: 1px solid orange;
+  // border: 1px solid orange;
 `;
 
 export const HeaderCenter = styled.div`
   width: 30vw;
   height: 15vh;
-  border: 1px solid orange;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  // border: 1px solid orange;
 `;
 
 export const HeaderRight = styled.div`
   width: 30vw;
   height: 15vh;
-  border: 1px solid orange;
+  // border: 1px solid orange;
 `;

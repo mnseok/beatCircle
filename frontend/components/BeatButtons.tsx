@@ -30,8 +30,8 @@ export default function BeatButtons({
           backgroundColor: isClicked ? "black" : "#CDCDCD",
           width: `${radius * 2}px`,
           height: `${radius * 2}px`,
-          top: y,
-          left: x,
+          top: `${y}px`,
+          left: `${x}px`,
         }}
       ></Button>
     );

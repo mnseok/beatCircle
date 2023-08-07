@@ -8,7 +8,7 @@ export const Body = styled.div`
   justify-content: space-evenly;
   align-items: center;
   padding: 5vh 5vw;
-  border: 1px solid blue;
+  //   border: 1px solid blue;
 `;
 
 export const InstrumentContainer = styled.div`
@@ -19,11 +19,11 @@ export const InstrumentContainer = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   alignitems: space-evenly;
-  border: 1px solid darkblue;
+  //   border: 1px solid darkblue;
 `;
 
 export const SelectContainer = styled.div`
   width: 60vw;
   height: 20vh;
-  border: 1px solid yellow;
+  //   border: 1px solid yellow;
 `;

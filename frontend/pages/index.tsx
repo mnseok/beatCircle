@@ -2,8 +2,6 @@ import { BeatCircle } from "@/components/BeatCircle";
 import { InstrumentCircle } from "@/components/InstrumentCircle";
 import {
   Body,
-  BodyInstrumentContainer,
-  BodyInstrumentWrapper,
   InstrumentContainer,
   SelectContainer,
 } from "@/styles/Body.styles";
@@ -27,7 +25,7 @@ export default function Home() {
     "low-floor-tom",
     "ride",
   ];
-  const [angle, setAngle] = useState(0);
+  const [angle, setAngle] = useState<number>(0);
   const prevTimeRef: React.MutableRefObject<number | undefined> = useRef();
 
   useEffect(() => {
@@ -62,7 +60,7 @@ export default function Home() {
         <HeaderLeft>
           <BeatCircle radius={20} numButtons={numButtons} angle={angle} />
         </HeaderLeft>
-        <HeaderCenter></HeaderCenter>
+        <HeaderCenter>CUCUMBER</HeaderCenter>
         <HeaderRight></HeaderRight>
       </Header>
 
