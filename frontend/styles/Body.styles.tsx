@@ -27,8 +27,8 @@ export const BodyInstrumentContainer = styled.div`
 `;
 
 export const BodySelectContainer = styled.div`
-  width: 60vw;
-  height: 20vh;
+  width: 90vw;
+  height: 30vh;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

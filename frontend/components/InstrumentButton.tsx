@@ -32,7 +32,7 @@ const InstrumentButton = ({ instrumentName }) => {
   return (
     <div ref={dragRef} style={buttonStyle}>
       <img src="/icons/cymbal.png" style={imageStyle} />
-      <div style={{ fontSize: "5px" }}>{instrumentName}</div>
+      <div style={{ fontSize: "8px" }}>{instrumentName}</div>
     </div>
   );
 };

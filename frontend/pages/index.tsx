@@ -70,9 +70,8 @@ export default function Home() {
             radius={radius}
             numButtons={numButtons}
             angle={angle}
-          ></InstrumentContainer>
-          {/* {circles} */}
-          <SelectContainer></SelectContainer>
+          />
+          <SelectContainer />
         </DndProvider>
       </Body>
     </div>
