@@ -33,5 +33,6 @@ export const BodySelectContainer = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  background-color: transparent;
   //   border: 1px solid yellow;
 `;
