@@ -41,6 +41,7 @@ export default function Home() {
       prevTimeRef.current = time;
       requestAnimationFrame(animate);
     };
+
     const animationFrameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrameId);
   }, [bpm]);
