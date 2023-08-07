@@ -29,6 +29,7 @@ export const HeaderCenter = styled.div`
   align-items: center;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
+  font-size: 1.3rem;
   // border: 1px solid orange;
 `;
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import {
   CircleContainer,
   InstrumentCircleContainer,
@@ -64,7 +64,7 @@ export function InstrumentCircle({
 
   return (
     <InstrumentCircleContainer>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", backgroundColor: "transparent" }}>
         <CircleContainer
           style={{
             width: ` ${radius * 2.5}px`,
@@ -87,9 +87,8 @@ export function InstrumentCircle({
             activateButtonIndices={activateButtonIndices}
             handleButtonClick={handleButtonClick}
           ></BeatButtons>
-          <Spinner radius={radius} angle={angle} center={center} />
+          <Spinner radius={radius} angle={angle} center={center}></Spinner>
         </CircleContainer>
-
         <VolumeSlider
           volume={volume}
           onChange={handleVolumeChange}

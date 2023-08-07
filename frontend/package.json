@@ -23,7 +23,10 @@
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-audio-player": "^0.17.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "18.2.0",
+    "shortid": "^2.2.16",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
   },

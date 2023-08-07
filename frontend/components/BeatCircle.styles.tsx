@@ -8,7 +8,7 @@ export const InstrumentCircleContainer = styled.div`
   align-items: center;
   justify-content: space-evenly;
   background-color: transparent;
-  // border: 1px solid aqua;
+  border: 1px solid aqua;
 `;
 
 export const CircleContainer = styled.div`
@@ -71,6 +71,7 @@ export const VolumeSliderWrapper = styled.div`
   justify-content: center;
   max-width: 400px;
   margin: 0 auto;
+  background-color: transparent;
   // border: 1px solid red;
 `;
 
