@@ -30,9 +30,10 @@ export const BodySelectContainer = styled.div`
   width: 60vw;
   height: 20vh;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: space-evenly;
   background-color: transparent;
   //   border: 1px solid yellow;
 `;

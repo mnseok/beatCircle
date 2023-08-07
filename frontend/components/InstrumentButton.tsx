@@ -15,12 +15,15 @@ const InstrumentButton = ({ instrumentName }) => {
     height: "30px",
     opacity: isDragging ? 0 : 1, // 드래그 중일 때 배경 투명하게 조절
     cursor: "grab",
-    boxShadow: "none", // 그림자 없애기
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   const imageStyle = {
-    width: `100%`,
-    height: "100%",
+    width: `60%`,
+    height: "60%",
 
     display: "block", // 이미지를 블록 요소로 설정하여 줄바꿈 방지
     margin: "auto", // 이미지를 중앙에 정렬
@@ -29,6 +32,7 @@ const InstrumentButton = ({ instrumentName }) => {
   return (
     <div ref={dragRef} style={buttonStyle}>
       <img src="/icons/cymbal.png" style={imageStyle} />
+      <div style={{ fontSize: "5px" }}>{instrumentName}</div>
     </div>
   );
 };
