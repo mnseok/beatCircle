@@ -16,9 +16,10 @@ import { DndProvider } from "react-dnd";
 
 export default function Home() {
   const radius = 30;
-  const numButtons = 12;
   const bpm = 120;
   const n_beats = 4;
+  const beats_per_beat = 4
+  const numButtons = n_beats * beats_per_beat;
   const rotation_per_minute = 60 / bpm * n_beats;
   const instruments = [
     // "drumstick",
