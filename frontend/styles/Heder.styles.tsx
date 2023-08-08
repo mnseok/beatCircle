@@ -8,7 +8,7 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0px 3vw;
-  // border: 1px solid lightgreen;
+  border: 1px solid lightgreen;
 `;
 
 export const HeaderLeft = styled.div`
@@ -16,8 +16,8 @@ export const HeaderLeft = styled.div`
   height: 15vh;
   display: flex;
   flex-direction: row;
-  // padding: 0px 3vw;
-  // border: 1px solid orange;
+  padding: 0px 3vw;
+  border: 1px solid orange;
 `;
 
 export const HeaderCenter = styled.div`
@@ -30,7 +30,7 @@ export const HeaderCenter = styled.div`
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 1.3rem;
-  // border: 1px solid orange;
+  border: 1px solid orange;
 `;
 
 export const HeaderRight = styled.div`
