@@ -1,22 +1,25 @@
 import { BodySelectContainer } from "@/styles/Body.styles";
 import { useEffect, useState } from "react";
 import InstrumentButtons from "./InstrumentButtons";
+import InstrumentButtonContainer from "./InstrumentButtonContainer";
 
 const SelectContainer = () => {
-  const [soundList, setSoundList] = useState([]);
-
+  const [folderList, setFolderList] = useState([]);
   useEffect(() => {
-    async function fetchSoundList() {
-      const response = await fetch("/api/sounds");
+    async function fetchFolderList() {
+      const response = await fetch("/api/soundFolders");
       const data = await response.json();
-      setSoundList(data);
+      setFolderList(data);
     }
-    fetchSoundList();
+
+    fetchFolderList();
   }, []);
 
   return (
     <BodySelectContainer>
-      <InstrumentButtons soundList={soundList} />
+      <InstrumentButtonContainer
+        folderName={folderList[0]}
+      ></InstrumentButtonContainer>
     </BodySelectContainer>
   );
 };

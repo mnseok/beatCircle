@@ -3,16 +3,10 @@ import { useDrag } from "react-dnd";
 import { ImageStyle, SelectButtonStyle } from "./SelectContainer.styles";
 import img from "../public/icons/cymbal.png";
 
-const InstrumentButton = ({
-  instrumentName,
-  fileExtension,
-}: {
-  instrumentName: string;
-  fileExtension: string;
-}) => {
+const InstrumentButton = ({ name, path }: { name: string; path: string }) => {
   const [{ isDragging }, dragRef] = useDrag({
     type: "instrumentButton",
-    item: { instrumentName, fileExtension },
+    item: { name, path },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -26,7 +20,7 @@ const InstrumentButton = ({
       }}
     >
       <ImageStyle src="icons/cymbal.png" />
-      <div style={{ fontSize: "8px" }}>{instrumentName}</div>
+      <div style={{ fontSize: "8px" }}>{name}</div>
     </SelectButtonStyle>
   );
 };

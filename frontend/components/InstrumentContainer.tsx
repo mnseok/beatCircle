@@ -3,9 +3,17 @@ import { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import { InstrumentCircle } from "./InstrumentCircle";
 
-const InstrumentContainer = ({ radius, numButtons, angle }) => {
+const InstrumentContainer = ({
+  radius,
+  numButtons,
+  angle,
+}: {
+  radius: number;
+  numButtons: number;
+  angle: number;
+}) => {
   const [selectedInstruments, setSelectedInstruments] = useState(
-    Array<{ instrumentName: string; fileExtension: string }>
+    Array<{ name: string; path: string }>
   );
   const [circles, setCircles] = useState([]);
   const [, dropRef] = useDrop({
@@ -27,8 +35,7 @@ const InstrumentContainer = ({ radius, numButtons, angle }) => {
         radius={radius}
         numButtons={numButtons}
         angle={angle}
-        instrument={instrument.instrumentName}
-        fileExtension={instrument.fileExtension}
+        instrumentInfo={instrument}
       />
     ));
     setCircles(updatedCircles);

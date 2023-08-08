@@ -16,14 +16,12 @@ export function InstrumentCircle({
   radius,
   numButtons,
   angle,
-  instrument,
-  fileExtension,
+  instrumentInfo,
 }: {
   radius: number;
   numButtons: number;
   angle: number;
-  instrument: string;
-  fileExtension: string;
+  instrumentInfo: { name: string; path: string };
 }): JSX.Element {
   const center = radius * 1.25;
   const [activateButtonIndices, setActivateButtonIndices] = useState<number[]>(
@@ -45,8 +43,7 @@ export function InstrumentCircle({
     setVolume(event.target.value);
   };
 
-  console.log(`sounds/${instrument}.${fileExtension}`);
-  const [instrumentPlay] = useSound(`sounds/${instrument}.${fileExtension}`, {
+  const [instrumentPlay] = useSound(`${instrumentInfo.path}`, {
     volume: volume / 100,
   });
 

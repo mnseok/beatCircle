@@ -1,11 +1,16 @@
-// pages/api/sounds.js
 import fs from "fs";
 import path from "path";
 
 export default function handler(req, res) {
-  const soundsFolderPath = path.join(process.cwd(), "public/sounds");
+  const { folderName } = req.query;
+  const folderPath = path.join(process.cwd(), `public/sounds/${folderName}`);
+  if (!fs.existsSync(folderPath)) {
+    res.status(404).json({ error: "Folder not found" });
+    return;
+  }
+
   const soundFiles = fs
-    .readdirSync(soundsFolderPath)
+    .readdirSync(folderPath)
     .filter((file) => file.endsWith(".mp3") || file.endsWith(".wav"));
 
   res.status(200).json(soundFiles);
