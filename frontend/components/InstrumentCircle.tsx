@@ -1,7 +1,10 @@
 import { use, useEffect, useState } from "react";
 import {
   CircleContainer,
+  CircleStatusWrapper,
+  InstrumentBody,
   InstrumentCircleContainer,
+  InstrumentHeader,
   InstrumentInfo,
   Round,
 } from "./BeatCircle.styles";
@@ -11,17 +14,21 @@ import useSound from "use-sound";
 import BeatButtons from "./BeatButtons";
 import { Spinner } from "./Spinner";
 import VolumeSlider from "./VolumeSlider";
+import RemoveButton from "./RemoveButton";
+import ResetButton from "./ResetButton";
 
 export function InstrumentCircle({
   radius,
   numButtons,
   angle,
   instrumentInfo,
+  onDelete,
 }: {
   radius: number;
   numButtons: number;
   angle: number;
   instrumentInfo: { name: string; path: string };
+  onDelete: () => void;
 }): JSX.Element {
   const center = radius * 1.25;
   const [activateButtonIndices, setActivateButtonIndices] = useState<number[]>(
@@ -35,6 +42,9 @@ export function InstrumentCircle({
       updatedIndices.push(index);
     }
     setActivateButtonIndices(updatedIndices.sort((a, b) => a - b));
+  };
+  const onReset = () => {
+    setActivateButtonIndices([]);
   };
 
   const [isCollided, setIsCollided] = useState<boolean>(false);
@@ -62,11 +72,16 @@ export function InstrumentCircle({
 
   return (
     <InstrumentCircleContainer>
-      <div style={{ display: "flex", backgroundColor: "transparent" }}>
+      <InstrumentHeader>
+        <RemoveButton onClick={onDelete} />
+        <ResetButton onClick={onReset}></ResetButton>
+      </InstrumentHeader>
+
+      <InstrumentBody>
         <CircleContainer
           style={{
-            width: ` ${radius * 2.5}px`,
-            height: `${radius * 2.5}px`,
+            width: ` ${center * 2}px`,
+            height: `${center * 2}px`,
           }}
         >
           <Round
@@ -91,7 +106,7 @@ export function InstrumentCircle({
           volume={volume}
           onChange={handleVolumeChange}
         ></VolumeSlider>
-      </div>
+      </InstrumentBody>
       <InstrumentInfo>{/* {instrument} */}</InstrumentInfo>
     </InstrumentCircleContainer>
   );

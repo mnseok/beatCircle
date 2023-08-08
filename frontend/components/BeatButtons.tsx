@@ -49,12 +49,10 @@ export default function BeatButtons({
       x:
         center +
         roundRadius *
-          (1 - 0.01) *
           Math.cos((2 * Math.PI * activateButtonIndices[i]) / numButtons),
       y:
         center +
         roundRadius *
-          (1 - 0.01) *
           Math.sin((2 * Math.PI * activateButtonIndices[i]) / numButtons),
     };
 
@@ -62,7 +60,6 @@ export default function BeatButtons({
       x:
         center +
         roundRadius *
-          (1 - 0.01) *
           Math.cos(
             (2 *
               Math.PI *
@@ -72,7 +69,6 @@ export default function BeatButtons({
       y:
         center +
         roundRadius *
-          (1 - 0.01) *
           Math.sin(
             (2 *
               Math.PI *
