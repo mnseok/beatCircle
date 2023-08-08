@@ -18,6 +18,8 @@ export default function Home() {
   const radius = 30;
   const numButtons = 12;
   const bpm = 120;
+  const n_beats = 4;
+  const rotation_per_minute = 60 / bpm * n_beats
   const instruments = [
     // "drumstick",
     "kick",
@@ -35,6 +37,7 @@ export default function Home() {
         prevTimeRef.current = time;
       }
       const deltaTime = time - prevTimeRef.current;
+      const deltaTime_second = 1000 * deltaTime;
       const angleDelta = ((bpm / (4 * 60)) * 360 * deltaTime * 0.001) % 360;
       setAngle((prevAngle) => (prevAngle + angleDelta) % 360);
 
