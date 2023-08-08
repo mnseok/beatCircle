@@ -2,23 +2,23 @@ import styled from "@emotion/styled";
 
 export const Body = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  //   justify-content: ;
   align-items: center;
-  padding: 5vh 5vw;
+  //   padding: 5vh 5vw;
 
   //   border: 1px solid blue;
 `;
 
 export const BodyInstrumentContainer = styled.div`
   width: 90vw;
-  height: 50vh;
+  height: 62vh;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  margin: 0px 5vw;
+  //   margin: 0px 5vw;
   justify-content: space-evenly;
   alignitems: space-evenly;
   background-color: #8d8d8d;
@@ -28,7 +28,7 @@ export const BodyInstrumentContainer = styled.div`
 
 export const BodySelectContainer = styled.div`
   width: 90vw;
-  height: 30vh;
+  height: 8vh;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

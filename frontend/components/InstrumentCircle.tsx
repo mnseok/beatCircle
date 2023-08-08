@@ -17,11 +17,13 @@ export function InstrumentCircle({
   numButtons,
   angle,
   instrument,
+  fileExtension,
 }: {
   radius: number;
   numButtons: number;
   angle: number;
   instrument: string;
+  fileExtension: string;
 }): JSX.Element {
   const center = radius * 1.25;
   const [activateButtonIndices, setActivateButtonIndices] = useState<number[]>(
@@ -35,17 +37,16 @@ export function InstrumentCircle({
       updatedIndices.push(index);
     }
     setActivateButtonIndices(updatedIndices.sort((a, b) => a - b));
-    // setActivateButtonIndices(updatedIndices);
   };
 
   const [isCollided, setIsCollided] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(50);
   const handleVolumeChange = (event) => {
     setVolume(event.target.value);
-    // 여기에 볼륨 변경을 위한 추가 동작을 수행할 수 있습니다.
   };
 
-  const [instrumentPlay] = useSound(`sounds/${instrument}.mp3`, {
+  console.log(`sounds/${instrument}.${fileExtension}`);
+  const [instrumentPlay] = useSound(`sounds/${instrument}.${fileExtension}`, {
     volume: volume / 100,
   });
 

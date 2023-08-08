@@ -2,18 +2,21 @@ import { BodyInstrumentContainer } from "@/styles/Body.styles";
 import { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import { InstrumentCircle } from "./InstrumentCircle";
-import shortid from "shortid";
 
 const InstrumentContainer = ({ radius, numButtons, angle }) => {
-  const [selectedInstruments, setSelectedInstruments] = useState([]);
+  const [selectedInstruments, setSelectedInstruments] = useState(
+    Array<{ instrumentName: string; fileExtension: string }>
+  );
   const [circles, setCircles] = useState([]);
   const [, dropRef] = useDrop({
     accept: "instrumentButton",
     drop: (item) => {
-      setSelectedInstruments((prevInstruments) => [
-        ...prevInstruments,
-        item.instrumentName,
-      ]);
+      setSelectedInstruments((prevInstruments) => {
+        if (prevInstruments.length < 12) {
+          return [...prevInstruments, item];
+        }
+        return prevInstruments;
+      });
     },
   });
 
@@ -24,7 +27,8 @@ const InstrumentContainer = ({ radius, numButtons, angle }) => {
         radius={radius}
         numButtons={numButtons}
         angle={angle}
-        instrument={instrument}
+        instrument={instrument.instrumentName}
+        fileExtension={instrument.fileExtension}
       />
     ));
     setCircles(updatedCircles);

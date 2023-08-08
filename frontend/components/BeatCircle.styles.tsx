@@ -8,7 +8,7 @@ export const InstrumentCircleContainer = styled.div`
   align-items: center;
   justify-content: space-evenly;
   background-color: transparent;
-  border: 1px solid aqua;
+  // border: 1px solid aqua;
 `;
 
 export const CircleContainer = styled.div`
