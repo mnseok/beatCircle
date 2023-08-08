@@ -1,25 +1,37 @@
 import { useEffect, useState } from "react";
 import InstrumentButton from "./InstrumentButton";
+import SelectButtonContainer from "./SelectButtonContainer";
 
-const InstrumentButtons = ({
-  soundPath,
+const SelectButtonContainers = ({
+  folderPath,
   soundList,
 }: {
-  soundPath: string;
+  folderPath: string;
   soundList: Array<string>;
 }) => {
-  const [instrumentButtons, setInstrumentButtons] = useState([]);
+  const [soundChunks, setSoundChunks] = useState<Array<Array<string>>>([]);
+
   useEffect(() => {
-    const updatedInstrumentButtons = soundList.map(
-      (soundFile: string, index) => {
-        const name = soundFile.split(".")[0];
-        const path = soundPath + soundFile;
-        return <InstrumentButton key={index} name={name} path={path} />;
-      }
-    );
-    setInstrumentButtons(updatedInstrumentButtons);
+    const chunks: Array<Array<string>> = [];
+    for (let i = 0; i < soundList.length; i += 9) {
+      chunks.push(soundList.slice(i, i + 9));
+    }
+    setSoundChunks(chunks);
   }, [soundList]);
-  return <>{instrumentButtons}</>;
+
+  return (
+    <>
+      {soundChunks.map((soundChunk, index) => {
+        return (
+          <SelectButtonContainer
+            key={index}
+            soundList={soundChunk}
+            folderPath={folderPath}
+          />
+        );
+      })}
+    </>
+  );
 };
 
-export default InstrumentButtons;
+export default SelectButtonContainers;

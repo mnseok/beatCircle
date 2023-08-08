@@ -6,18 +6,21 @@ export const InstrumentCircleContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: ;
   background-color: transparent;
-  // border: 1px solid aqua;
+  border: 1px solid #a0a0a0;
+  border-radius: 2px;
+  margin: 5px;
 `;
 
 export const CircleContainer = styled.div`
+  height: 100%;
   padding: 0px;
   margin: 0px;
   display: flex;
   position: relative;
   background-color: transparent;
-  // border: 1px solid red;
+  // border: 1px solid green;
 `;
 
 export const Button = styled.button`
@@ -51,7 +54,8 @@ export const YellowDot = styled.div`
 `;
 
 export const InstrumentInfo = styled.div`
-  width: 80%;
+  height: 15%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -62,17 +66,55 @@ export const InstrumentInfo = styled.div`
   // border: 1px solid purple;
 `;
 
+export const InstrumentHeader = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  background-color: #a0a0a0;
+`;
+
+export const InstrumentBody = styled.div`
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  backgroundcolor: "transparent";
+  // border: 1px solid red;
+`;
+export const CircleStatusWrapper = styled.div`
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // border: 1px solid red;
+`;
+
+export const HeaderButtonWrapper = styled.div`
+  width: 5px;
+  height: 5px;
+  display: flex;
+  margin: 1px 2px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const VolumeSliderWrapper = styled.div`
   width: 10px;
   height: 100%;
+  // width: 80%;
+  // height: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   max-width: 400px;
-  margin: 0 auto;
   background-color: transparent;
-  // border: 1px solid red;
+  // border: 1px solid orange;
 `;
 
 export const StyledInput = styled.input`

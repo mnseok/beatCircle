@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useDrag } from "react-dnd";
-import { ImageStyle, SelectButtonStyle } from "./SelectContainer.styles";
+import { ImageStyle, SelectButtonWrapper } from "./SelectContainer.styles";
 import img from "../public/icons/cymbal.png";
 
 const InstrumentButton = ({ name, path }: { name: string; path: string }) => {
@@ -11,17 +11,16 @@ const InstrumentButton = ({ name, path }: { name: string; path: string }) => {
       isDragging: monitor.isDragging(),
     }),
   });
-
   return (
-    <SelectButtonStyle
+    <SelectButtonWrapper
       ref={dragRef}
       style={{
         opacity: isDragging ? 0 : 1, // 드래그 중일 때 배경 투명하게 조절
       }}
     >
       <ImageStyle src="icons/cymbal.png" />
-      <div style={{ fontSize: "8px" }}>{name}</div>
-    </SelectButtonStyle>
+      <div style={{ fontSize: "8px" }}>{name.split("_")[1]}</div>
+    </SelectButtonWrapper>
   );
 };
 
