@@ -1,7 +1,13 @@
-import { MouseEvent } from "react";
+import { ChangeEvent } from "react";
 import { StyledInput, VolumeSliderWrapper } from "./BeatCircle.styles";
 
-const VolumeSlider = ({ value, onChange }: { value: number }) => {
+const VolumeSlider = ({
+  value,
+  onChange,
+}: {
+  value: number;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+}) => {
   return (
     <VolumeSliderWrapper>
       <StyledInput

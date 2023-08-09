@@ -1,4 +1,4 @@
-import BeatButtons from "./BeatButtons";
+import BeatButtons from "./BeatButton";
 import { CircleContainer, Round } from "./BeatCircle.styles";
 import { Spinner } from "./Spinner";
 

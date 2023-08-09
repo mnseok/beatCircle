@@ -1,7 +1,6 @@
-import { use, useEffect, useState } from "react";
+import { ChangeEvent, use, useEffect, useState } from "react";
 import {
   CircleContainer,
-  CircleStatusWrapper,
   InstrumentBody,
   InstrumentCircleContainer,
   InstrumentHeader,
@@ -11,11 +10,12 @@ import {
 import React from "react";
 import useSound from "use-sound";
 
-import BeatButtons from "./BeatButtons";
+import BeatButtons from "./BeatButton";
 import { Spinner } from "./Spinner";
 import VolumeSlider from "./VolumeSlider";
 import RemoveButton from "./RemoveButton";
 import ResetButton from "./ResetButton";
+import Volume from "./Volume";
 
 export function InstrumentCircle({
   radius,
@@ -30,7 +30,7 @@ export function InstrumentCircle({
   instrumentInfo: { name: string; path: string };
   onDelete: () => void;
 }): JSX.Element {
-  const center = radius * 1.25;
+  const center = (radius * 2.4) / 2;
   const [activateButtonIndices, setActivateButtonIndices] = useState<number[]>(
     []
   );
@@ -49,9 +49,6 @@ export function InstrumentCircle({
 
   const [isCollided, setIsCollided] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(50);
-  const handleVolumeChange = (event) => {
-    setVolume(event.target.value);
-  };
 
   const [instrumentPlay] = useSound(`${instrumentInfo.path}`, {
     volume: volume / 100,
@@ -71,7 +68,9 @@ export function InstrumentCircle({
   }
 
   return (
-    <InstrumentCircleContainer>
+    <InstrumentCircleContainer
+      style={{ width: `${radius * 3}px`, height: `${radius * 3}px` }}
+    >
       <InstrumentHeader>
         <RemoveButton onClick={onDelete} />
         <ResetButton onClick={onReset}></ResetButton>
@@ -79,10 +78,7 @@ export function InstrumentCircle({
 
       <InstrumentBody>
         <CircleContainer
-          style={{
-            width: ` ${center * 2}px`,
-            height: `${center * 2}px`,
-          }}
+          style={{ width: `${radius * 2.4}px`, height: `${radius * 2.4}px` }}
         >
           <Round
             style={{
@@ -91,6 +87,7 @@ export function InstrumentCircle({
               top: `${center - roundRadius}px`,
               left: `${center - roundRadius}px`,
               border: `${roundRadius * 0.02}px solid #cdcdcd`,
+              // border: "1px solid #cdcdcd",
             }}
           ></Round>
           <BeatButtons
@@ -102,10 +99,9 @@ export function InstrumentCircle({
           ></BeatButtons>
           <Spinner radius={radius} angle={angle} center={center}></Spinner>
         </CircleContainer>
-        <VolumeSlider
-          volume={volume}
-          onChange={handleVolumeChange}
-        ></VolumeSlider>
+        {/* <VolumeSlider value={volume} onChange={handleVolumeChange} /> */}
+
+        <Volume volume={volume} setVolume={setVolume} />
       </InstrumentBody>
       <InstrumentInfo>{/* {instrument} */}</InstrumentInfo>
     </InstrumentCircleContainer>

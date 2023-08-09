@@ -1,4 +1,4 @@
-import { Button } from "./BeatCircle.styles";
+import { BeatButton, BeatButtonDot } from "./BeatCircle.styles";
 import ButtonLine from "./ButtonLine";
 
 export default function BeatButtons({
@@ -16,24 +16,35 @@ export default function BeatButtons({
 }): JSX.Element {
   const buttons = Array.from(Array(numButtons).keys()).map((index) => {
     const { x, y } = {
-      x: center + roundRadius * Math.cos((2 * Math.PI * index) / numButtons),
-      y: center + roundRadius * Math.sin((2 * Math.PI * index) / numButtons),
+      x:
+        center +
+        0.99 * roundRadius * Math.cos((2 * Math.PI * index) / numButtons),
+      y:
+        center +
+        0.99 * roundRadius * Math.sin((2 * Math.PI * index) / numButtons),
     };
     const isClicked: boolean = activateButtonIndices.includes(index);
-    const radius = roundRadius * (isClicked ? 0.07 : 0.04);
+    const radius = roundRadius * (isClicked ? 0.05 : 0.04);
 
     return (
-      <Button
+      <BeatButton
         key={index}
         onClick={() => handleButtonClick(index)}
         style={{
-          backgroundColor: isClicked ? "black" : "#CDCDCD",
-          width: `${radius * 2}px`,
-          height: `${radius * 2}px`,
+          width: `${radius * 4}px`,
+          height: `${radius * 4}px`,
           top: `${y}px`,
           left: `${x}px`,
         }}
-      ></Button>
+      >
+        <BeatButtonDot
+          style={{
+            width: `${radius * 2}px`,
+            height: `${radius * 2}px`,
+            backgroundColor: isClicked ? "black" : "#CDCDCD",
+          }}
+        ></BeatButtonDot>
+      </BeatButton>
     );
   });
 
@@ -83,7 +94,7 @@ export default function BeatButtons({
         index={i}
         startPoint={startPoint}
         endPoint={endPoint}
-        strokeWidth={roundRadius * 0.03}
+        strokeWidth={roundRadius * 0.02}
       ></ButtonLine>
     );
   }
