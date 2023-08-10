@@ -23,7 +23,6 @@ export const CircleContainer = styled.div`
   justify-content: center;
   position: relative;
   background-color: transparent;
-  border: 1px solid green;
 `;
 
 export const BeatButton = styled.button`
@@ -127,54 +126,65 @@ export const HeaderButton = styled.button`
 `;
 
 export const VolumeWrapper = styled.div`
-  width: 10%;
+  width: 15%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  // justify-content: space-evenly;
+  align-items: center;
   justify-content: center;
-  align-items: space-between;
-  border: 1px solid black;
+`;
+
+export const VolumeStatusWrapper = styled.div`
+  width: 80%;
+  height: 95%;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const VolumeSliderWrapper = styled.div`
-  width: 170px;
-  height: 30px;
+  width: 60%;
+  height: 80%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   max-width: 400px;
-  transform: rotate(-90deg);
   background-color: transparent;
-  border: 1px solid orange;
 `;
 
 export const StyledInput = styled.input`
   width: 160px;
+
   -webkit-appearance: none;
   padding: 0;
   margin: 0;
   cursor: pointer;
+  transform: rotate(-90deg);
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 10px;
-    height: 15px;
+    height: 10px;
     background-color: ivory; /* 슬라이더 핸들 색상 */
-    // border-radius: 50%;
     cursor: pointer;
   }
 
   &::-webkit-slider-runnable-track {
-    width: 130px;
-    height: 15px;
+    width: 150px;
+    height: 10px;
     background-color: lightgray; /* 슬라이더 트랙 색상 */
     // border-radius: 2px;
   }
 `;
 
 export const VolumeMuteButton = styled.button`
-  width: 10px;
-  height: 10px;
-  border: 1px solid black;
+  width: 60%;
+  height: 10%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
 `;

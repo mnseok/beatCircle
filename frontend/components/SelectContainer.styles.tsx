@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const InstrumentButtonContainerStyle = styled.div`
   width: 70vw;
-  height: 15vh;
+  height: 5vh;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -17,47 +17,51 @@ export const SelectButtonContainerWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: start;
+  align-items: start;
 `;
 
 export const SelectButtonWrapper = styled.div`
-  width: 45px;
+  width: 60px;
   height: 30px;
   cursor: grab;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 3px 6px;
 
-  // border: 1px solid black;
+  border: 1px solid black;
 `;
 
 export const ImageStyle = styled.img`
-  width: 10px;
-  height: 10px;
+  width: 50px;
+  height: 50px;
   display: block;
   margin: auto;
 `;
 
 export const FolderSelectButtonContainerWrapper = styled.div`
-  height: 15vh;
-  width: 10vw;
+  height: 10vh;
+  width: 60vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  overflow: scroll;
-
-  // border-radius: 10px;
-  // border: 1px solid black;
+  // justify-content: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  border: 1px solid black;
 `;
 
 export const FolderSelectButtonWrapper = styled.button`
-  height: 3vh;
-  width: 80%;
+  height: 70px;
+  width: 70px;
   border: 1px solid black;
+  flex-shrink: 0;
 
-  margin: 1px 0px;
-  border-radius: 2px;
+  margin: 0px 5px;
+  // border-radius: 2px;
 
   // border: none;
 `;

@@ -1,8 +1,7 @@
 import { SelectContainerWrapper } from "@/styles/Body.styles";
 import { useEffect, useState } from "react";
-import InstrumentButtons from "./InstrumentButtons";
 import InstrumentButtonContainer from "./InstrumentButtonContainer";
-import InstrumentSelectButtoncontainer from "./FolderSelectButtonContainer";
+import FolderSelectButtoncontainer from "./FolderSelectButtonContainer";
 
 const SelectContainer = () => {
   const [folderList, setFolderList] = useState([]);
@@ -20,11 +19,11 @@ const SelectContainer = () => {
   const handleButtonClick = (folderName: string) => {
     setSelectedFolder(folderName);
   };
-  // console.log(selectedFolder);
+
   return (
     <SelectContainerWrapper>
       <InstrumentButtonContainer folderName={selectedFolder || folderList[0]} />
-      <InstrumentSelectButtoncontainer
+      <FolderSelectButtoncontainer
         folderList={folderList}
         onClick={handleButtonClick}
       />

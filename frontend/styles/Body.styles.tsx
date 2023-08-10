@@ -30,7 +30,7 @@ export const SelectContainerWrapper = styled.div`
   height: 21vh;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   padding: 0px 24px;

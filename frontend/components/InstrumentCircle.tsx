@@ -49,9 +49,10 @@ export function InstrumentCircle({
 
   const [isCollided, setIsCollided] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(50);
+  const [isMuted, setIsMuted] = useState<boolean>(false);
 
   const [instrumentPlay] = useSound(`${instrumentInfo.path}`, {
-    volume: volume / 100,
+    volume: isMuted ? 0 : volume / 100,
   });
 
   const collidedButtonIndex = activateButtonIndices.filter((index) => {
@@ -101,9 +102,14 @@ export function InstrumentCircle({
         </CircleContainer>
         {/* <VolumeSlider value={volume} onChange={handleVolumeChange} /> */}
 
-        <Volume volume={volume} setVolume={setVolume} />
+        <Volume
+          volume={isMuted ? 0 : volume}
+          setVolume={setVolume}
+          isMuted={isMuted}
+          setIsMuted={setIsMuted}
+        />
       </InstrumentBody>
-      <InstrumentInfo>{/* {instrument} */}</InstrumentInfo>
+      <InstrumentInfo></InstrumentInfo>
     </InstrumentCircleContainer>
   );
 }

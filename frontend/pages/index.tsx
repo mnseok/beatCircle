@@ -15,7 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import { DndProvider } from "react-dnd";
 
 export default function Home() {
-  const radius = 100;
+  const radius = 80;
   const bpm = 120;
   const n_beats = 4;
   const beats_per_beat = 4;

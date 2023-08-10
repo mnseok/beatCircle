@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import InstrumentButtons from "./InstrumentButtons";
 import { InstrumentButtonContainerStyle } from "./SelectContainer.styles";
+import SelectButtonContainer from "./SelectButtonContainer";
 
 const InstrumentButtonContainer = ({ folderName }: { folderName: string }) => {
   const [fileList, setFileList] = useState([]);
@@ -23,10 +23,10 @@ const InstrumentButtonContainer = ({ folderName }: { folderName: string }) => {
 
   return (
     <InstrumentButtonContainerStyle>
-      <InstrumentButtons
+      <SelectButtonContainer
         soundList={fileList}
         folderPath={folderPath}
-      ></InstrumentButtons>
+      ></SelectButtonContainer>
     </InstrumentButtonContainerStyle>
   );
 };
