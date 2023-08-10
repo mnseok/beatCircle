@@ -1,9 +1,9 @@
 import { BeatCircle } from "@/components/BeatCircle";
-import { InstrumentCircle } from "@/components/InstrumentCircle";
+import { InstrumentCircle } from "@/components/InstrumentContainer/InstrumentCircle";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import InstrumentContainer from "@/components/InstrumentContainer";
-import SelectContainer from "@/components/SelectContainer";
+import InstrumentContainer from "@/components/InstrumentContainer/InstrumentContainer";
+import SelectContainer from "@/components/Select/SelectContainer";
 import { Body } from "@/styles/Body.styles";
 import {
   Header,

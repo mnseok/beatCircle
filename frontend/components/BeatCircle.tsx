@@ -1,6 +1,9 @@
-import BeatButtons from "./BeatButton";
-import { CircleContainer, Round } from "./BeatCircle.styles";
-import { Spinner } from "./Spinner";
+import BeatButtons from "./InstrumentContainer/BeatButton";
+import {
+  CircleContainer,
+  Round,
+} from "./InstrumentContainer/BeatCircle.styles";
+import { Spinner } from "./InstrumentContainer/Spinner";
 
 export function BeatCircle({
   radius,

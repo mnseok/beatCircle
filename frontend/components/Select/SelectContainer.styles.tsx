@@ -42,7 +42,7 @@ export const ImageStyle = styled.img`
   margin: auto;
 `;
 
-export const FolderSelectButtonContainerWrapper = styled.div`
+export const InstrumentSelectButtonContainerWrapper = styled.div`
   height: 10vh;
   width: 60vw;
   display: flex;
@@ -54,7 +54,7 @@ export const FolderSelectButtonContainerWrapper = styled.div`
   border: 1px solid black;
 `;
 
-export const FolderSelectButtonWrapper = styled.button`
+export const InstrumentSelectButtonWrapper = styled.button`
   height: 70px;
   width: 70px;
   border: 1px solid black;

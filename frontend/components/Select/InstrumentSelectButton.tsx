@@ -3,7 +3,7 @@ import {
   ImageStyle,
 } from "./SelectContainer.styles";
 
-const FolderSelectButton = ({
+const InstrumentSelectButton = ({
   instrument,
   onClick,
 }: {
@@ -19,4 +19,4 @@ const FolderSelectButton = ({
     </FolderSelectButtonWrapper>
   );
 };
-export default FolderSelectButton;
+export default InstrumentSelectButton;
