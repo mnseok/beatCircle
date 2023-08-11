@@ -38,7 +38,7 @@ export function BeatCircle({
           numButtons={numButtons}
           center={center}
           roundRadius={radius}
-          activateButtonIndices={[0, 3, 6, 9]}
+          activateButtonIndices={[0, 9, 1, 3]}
           handleButtonClick={() => {}}
         ></BeatButtons>
         <Spinner radius={radius} angle={angle} center={center} />
