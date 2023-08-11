@@ -1,10 +1,13 @@
 import { ChangeEvent, use, useEffect, useState } from "react";
 import {
   CircleContainer,
+  ImageStyle,
   InstrumentBody,
   InstrumentCircleContainer,
+  InstrumentDetail,
   InstrumentHeader,
   InstrumentInfo,
+  InstrumentName,
   Round,
 } from "./BeatCircle.styles";
 import React from "react";
@@ -27,7 +30,7 @@ export function InstrumentCircle({
   radius: number;
   numButtons: number;
   angle: number;
-  instrumentInfo: { name: string; path: string };
+  instrumentInfo: { name: string; detail: string; soundPath: string };
   onDelete: () => void;
 }): JSX.Element {
   const center = (radius * 2.4) / 2;
@@ -51,7 +54,7 @@ export function InstrumentCircle({
   const [volume, setVolume] = useState<number>(50);
   const [isMuted, setIsMuted] = useState<boolean>(false);
 
-  const [instrumentPlay] = useSound(`${instrumentInfo.path}`, {
+  const [instrumentPlay] = useSound(`${instrumentInfo?.soundPath}`, {
     volume: isMuted ? 0 : volume / 100,
   });
 
@@ -67,6 +70,7 @@ export function InstrumentCircle({
   } else if (isCollided && collidedButtonIndex.length === 0) {
     setIsCollided(false);
   }
+  const imgPath = `/icons/${instrumentInfo.name.split("_")[0]}.png`;
 
   return (
     <InstrumentCircleContainer
@@ -76,11 +80,19 @@ export function InstrumentCircle({
         <RemoveButton onClick={onDelete} />
         <ResetButton onClick={onReset}></ResetButton>
       </InstrumentHeader>
-
       <InstrumentBody>
         <CircleContainer
           style={{ width: `${radius * 2.4}px`, height: `${radius * 2.4}px` }}
         >
+          <ImageStyle
+            src={imgPath}
+            style={{
+              width: `${roundRadius / 2}px`,
+              height: `${roundRadius / 2}px`,
+              top: `${center}px`,
+              left: `${center}px`,
+            }}
+          />
           <Round
             style={{
               width: `${roundRadius * 2}px`,
@@ -100,8 +112,6 @@ export function InstrumentCircle({
           ></BeatButtons>
           <Spinner radius={radius} angle={angle} center={center}></Spinner>
         </CircleContainer>
-        {/* <VolumeSlider value={volume} onChange={handleVolumeChange} /> */}
-
         <Volume
           volume={isMuted ? 0 : volume}
           setVolume={setVolume}
@@ -109,7 +119,12 @@ export function InstrumentCircle({
           setIsMuted={setIsMuted}
         />
       </InstrumentBody>
-      <InstrumentInfo></InstrumentInfo>
+      <InstrumentInfo>
+        <InstrumentName>{instrumentInfo.name.split("_")[0]}</InstrumentName>
+        <InstrumentDetail>
+          {instrumentInfo.detail.split("_")[1].split(".")[0]}
+        </InstrumentDetail>
+      </InstrumentInfo>
     </InstrumentCircleContainer>
   );
 }

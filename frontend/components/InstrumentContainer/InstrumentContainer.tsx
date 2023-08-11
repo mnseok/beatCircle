@@ -14,14 +14,15 @@ const InstrumentContainer = ({
   angle: number;
 }) => {
   const [selectedInstruments, setSelectedInstruments] = useState(
-    Array<{ name: string; path: string; id: string }>
+    Array<{ id: string; name: string; detail: string; soundPath: string }>
   );
+
   const [circles, setCircles] = useState([]);
   const [, dropRef] = useDrop({
     accept: "instrumentButton",
     drop: (item) => {
       setSelectedInstruments((prevInstruments) => {
-        if (prevInstruments.length < 12) {
+        if (prevInstruments.length < 10) {
           return [...prevInstruments, { ...item, id: shortid.generate() }];
         }
         return prevInstruments;
@@ -41,7 +42,7 @@ const InstrumentContainer = ({
   useEffect(() => {
     const updatedCircles = selectedInstruments.map((instrument, index) => (
       <InstrumentCircle
-        key={instrument.id} // 사용하는 shortid 대신 악기 이름을 키로 사용
+        key={instrument.id}
         radius={radius}
         numButtons={numButtons}
         angle={angle}

@@ -9,7 +9,8 @@ export const InstrumentCircleContainer = styled.div`
   justify-content: ;
   background-color: transparent;
   border-radius: 2px;
-  margin: 5px;
+  // margin: 5px;
+  margin: 0px 0px;
   border: 1px solid #a0a0a0;
 `;
 
@@ -35,7 +36,7 @@ export const BeatButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #black;
+  // border: 1px solid black;
 `;
 
 export const BeatButtonDot = styled.div`
@@ -64,19 +65,6 @@ export const YellowDot = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const InstrumentInfo = styled.div`
-  height: 15%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 15px;
-  background-color: transparent;
-  font-size: 0.8rem;
-  // border: 1px solid purple;
-`;
-
 export const InstrumentHeader = styled.div`
   width: 100%;
   height: 5%;
@@ -86,23 +74,6 @@ export const InstrumentHeader = styled.div`
   justify-content: start;
   align-items: center;
   background-color: #a0a0a0;
-`;
-
-export const InstrumentBody = styled.div`
-  width: 100%;
-  height: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  backgroundcolor: "transparent";
-  // border: 1px solid red;
-`;
-export const CircleStatusWrapper = styled.div`
-  width: 100%;
-  height: 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   // border: 1px solid red;
 `;
 
@@ -123,6 +94,24 @@ export const HeaderButton = styled.button`
   width: 100%;
   height: 100%;
   border-radius: 50%;
+`;
+
+export const InstrumentBody = styled.div`
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  backgroundcolor: "transparent";
+  // border: 1px solid red;
+`;
+export const CircleStatusWrapper = styled.div`
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // border: 1px solid red;
 `;
 
 export const VolumeWrapper = styled.div`
@@ -187,4 +176,58 @@ export const VolumeMuteButton = styled.button`
   display: flex;
   justify-content: center;
   // align-items: center;
+`;
+
+export const InstrumentInfo = styled.div`
+  width: 100%;
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: transparent;
+  font-size: 0.8rem;
+  // border: 1px solid purple;
+`;
+
+export const ImageStyle = styled.img`
+  width: 35px;
+  height: 35px;
+  disply: block;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  background-color: transparent;
+  -webkit-user-drag: none;
+  // border: 1px solid red;
+`;
+
+export const InstrumentName = styled.div`
+  width: auto;
+  height: 80%;
+  margin: 0px 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  // font-size: 8px;
+  color: #cdcdcd;
+
+  // border: 1px solid red;
+`;
+
+export const InstrumentDetail = styled.div`
+  width: auto;
+  height: 60%;
+  padding: 0px
+  margin: 0px 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #cdcdcd;
+
+  // border: 1px solid red;
 `;

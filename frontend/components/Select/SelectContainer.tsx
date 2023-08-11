@@ -1,31 +1,54 @@
 import { SelectContainerWrapper } from "@/styles/Body.styles";
 import { useEffect, useState } from "react";
-import InstrumentButtonContainer from "./InstrumentButtonContainer";
-import InstrumentSelectButtoncontainer from "./InstrumentSelectButtonContainer";
+import { Instrument } from "@/types/instrument.type";
+import DetailSelectButtonContainer from "./DetailSelectButtonContainer";
+
+import InstrumentSelectButtonContainer from "./InstrumentSelectButtonContainer";
 
 const SelectContainer = () => {
-  const [folderList, setFolderList] = useState([]);
+  const [instrumentList, setInstrumentList] = useState<Instrument>({});
   useEffect(() => {
-    async function fetchFolderList() {
+    async function fetchInstrumentList() {
       const response = await fetch("/api/soundFolders");
       const data = await response.json();
-      setFolderList(data);
+      const instrumentList: Instrument = {};
+      data.forEach((instrument: string) => {
+        if (instrument) instrumentList[instrument] = null;
+      });
+      setInstrumentList(instrumentList);
     }
-
-    fetchFolderList();
+    fetchInstrumentList();
   }, []);
 
-  const [selectedFolder, setSelectedFolder] = useState("");
-  const handleButtonClick = (folderName: string) => {
-    setSelectedFolder(folderName);
+  const [selectedInstrument, setSelectedInstrument] = useState<string | null>(
+    null
+  );
+  const handleInstrumentSelectButtonClick = (instrumentName: string) => {
+    setSelectedInstrument(
+      instrumentName !== selectedInstrument ? instrumentName : null
+    );
+  };
+
+  const handleDetailSelectButtonClick = (
+    instrumentName: string,
+    detailName: string
+  ) => {
+    setInstrumentList((prev) => {
+      return { ...prev, [selectedInstrument]: detailName };
+    });
+    setSelectedInstrument(null);
   };
 
   return (
     <SelectContainerWrapper>
-      <InstrumentButtonContainer folderName={selectedFolder || folderList[0]} />
-      <InstrumentSelectButtoncontainer
-        instrumentList={folderList}
-        onClick={handleButtonClick}
+      <DetailSelectButtonContainer
+        instrumentName={selectedInstrument}
+        handleDetailSelectButtonClick={handleDetailSelectButtonClick}
+      ></DetailSelectButtonContainer>
+
+      <InstrumentSelectButtonContainer
+        instrumentList={instrumentList}
+        onClick={handleInstrumentSelectButtonClick}
       />
     </SelectContainerWrapper>
   );

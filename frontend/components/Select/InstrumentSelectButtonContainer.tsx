@@ -1,34 +1,31 @@
 import { useEffect, useState } from "react";
 import InstrumentSelectButton from "./InstrumentSelectButton";
-import { InstrumentSelectButtonContainerWrapper } from "./SelectContainer.styles";
 
-export const InstrumentSelectButtoncontainer = ({
+import { Instrument } from "@/types/instrument.type";
+import { InstrumentSelectButtonContainerWrapper } from "./InstrumentSelect.styles";
+
+export const InstrumentSelectButtonContainer = ({
   instrumentList,
   onClick,
 }: {
-  instrumentList: Array<string>;
+  instrumentList: Instrument;
   onClick: (InstrumentName: string) => void;
 }) => {
-  const [InstrumentSelectButtons, setInstrumentSelectButtons] =
-    useState<JSX.Element>([]);
-  useEffect(() => {
-    const InstrumentSelectButtons: Array<JSX.Element> = [];
-    for (let i = 0; i < instrumentList.length; i++) {
-      InstrumentSelectButtons.push(
-        <InstrumentSelectButton
-          key={i}
-          instrument={instrumentList[i]}
-          onClick={onClick}
-        />
-      );
-    }
-    setInstrumentSelectButtons(InstrumentSelectButtons);
-  }, [instrumentList]);
-
+  const InstrumentSelectButtons: Array<JSX.Element> = [];
+  for (const name of Object.keys(instrumentList)) {
+    InstrumentSelectButtons.push(
+      <InstrumentSelectButton
+        key={name}
+        instrument={{ name, detail: instrumentList[name] }}
+        onClick={onClick}
+        dragable={instrumentList[name] !== null}
+      />
+    );
+  }
   return (
     <InstrumentSelectButtonContainerWrapper>
       {InstrumentSelectButtons}
     </InstrumentSelectButtonContainerWrapper>
   );
 };
-export default InstrumentSelectButtoncontainer;
+export default InstrumentSelectButtonContainer;

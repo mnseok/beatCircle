@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Header = styled.div`
-  height: 20vh;
+  height: 10vh;
   width: 100vw;
   display: flex;
   flex-direction: row;
