@@ -18,7 +18,7 @@ export default function Home() {
   const radius = 30;
   const bpm = 90;
   const n_beats = 4;
-  const beats_per_beat = 3
+  const beats_per_beat = 4
   const numButtons = n_beats * beats_per_beat;
   const rotation_per_minute = 60 / bpm * n_beats;
   const instruments = [
