@@ -63,7 +63,7 @@ export default function Home() {
           <BeatCircle radius={20} numButtons={numButtons} angle={angle} />
         </HeaderLeft>
         <HeaderCenter>
-          C&nbsp;&nbsp;U&nbsp;&nbsp;C&nbsp;&nbsp;U&nbsp;&nbsp;M&nbsp;&nbsp;B&nbsp;&nbsp;E&nbsp;&nbsp;R
+          PUMPKIN
         </HeaderCenter>
         <HeaderRight></HeaderRight>
       </Header>
