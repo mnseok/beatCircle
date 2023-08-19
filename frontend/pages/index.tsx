@@ -18,7 +18,7 @@ export default function Home() {
   const radius = 80;
   const [bpm, setBPM] = useState(120); // 초기값은 120
   const [n_beats, setn_beats] = useState(4); // 초기값은 4
-  const beats_per_beat = 4;
+  const [nth_partial, setnth_partial] = useState(4);
   const numButtons = n_beats * beats_per_beat;
   const rotation_per_minute = (60 / bpm) * n_beats;
   const instruments = [
