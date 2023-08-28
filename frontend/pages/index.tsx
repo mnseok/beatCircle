@@ -19,7 +19,7 @@ export default function Home() {
   const [bpm, setBPM] = useState(120); // 초기값은 120
   const [n_beats, setn_beats] = useState(4); // 초기값은 4
   const [nth_partial, setnth_partial] = useState(4);
-  const numButtons = n_beats * beats_per_beat;
+  const numButtons = n_beats * nth_partial;
   const rotation_per_minute = (60 / bpm) * n_beats;
   const instruments = [
     // "drumstick",
