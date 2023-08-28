@@ -1,7 +1,6 @@
 import { BeatCircle } from "@/components/BeatCircle";
 import { InstrumentCircle } from "@/components/InstrumentContainer/InstrumentCircle";
 import { HTML5Backend } from "react-dnd-html5-backend";
-
 import InstrumentContainer from "@/components/InstrumentContainer/InstrumentContainer";
 import SelectContainer from "@/components/Select/SelectContainer";
 import { Body } from "@/styles/Body.styles";
@@ -22,7 +21,6 @@ export default function Home() {
   const numButtons = n_beats * nth_partial;
   const rotation_per_minute = (60 / bpm) * n_beats;
   const instruments = [
-    // "drumstick",
     "kick",
     "snare-drum",
     "hi-hat",
@@ -38,8 +36,7 @@ export default function Home() {
         prevTimeRef.current = time;
       }
       const deltaTime = time - prevTimeRef.current;
-      const deltaTime_second = 1000 * deltaTime;
-      const angleDelta = ((bpm / (4 * 60)) * 360 * deltaTime * 0.001) % 360;
+      const angleDelta = ((bpm / 60) * 360 * deltaTime * 0.001) % 360;
       setAngle((prevAngle) => (prevAngle + angleDelta) % 360);
 
       prevTimeRef.current = time;
@@ -60,7 +57,17 @@ export default function Home() {
     >
       <Header>
         <HeaderLeft>
-          <BeatCircle radius={20} numButtons={numButtons} angle={angle} />
+          <BeatCircle 
+            radius={20} 
+            numButtons={numButtons} 
+            angle={angle} 
+            bpm={bpm} 
+            setBPM={setBPM}
+            n_beats={n_beats}
+            setn_beats={setn_beats}
+            nth_partial={nth_partial}
+            setnth_partial={setnth_partial}
+          />
         </HeaderLeft>
         <HeaderCenter>
           PUMPKIN

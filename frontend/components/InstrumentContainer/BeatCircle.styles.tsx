@@ -231,3 +231,4 @@ export const InstrumentDetail = styled.div`
 
   // border: 1px solid red;
 `;
+
