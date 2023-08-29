@@ -31,7 +31,22 @@ export function BeatCircle({
 }: BeatCircleProps): JSX.Element {
   const wrapperSize = radius * 2.5;
   const center = wrapperSize / 2;
-  const [tempBPM, setTempBPM] = useState(bpm);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+
+  const handleMouseDown = (type: 'increase' | 'decrease') => {
+    if (type === 'increase') {
+      setIntervalId(setInterval(() => setBPM(prev => prev + 1), 100));
+    } else {
+      setIntervalId(setInterval(() => setBPM(prev => prev - 1), 100));
+    }
+  };
+
+  const handleMouseUp = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+    }
+  };
 
   return (
     <div
@@ -67,33 +82,25 @@ export function BeatCircle({
 
       <div style={{ marginLeft: '20px', display: 'flex', flexDirection: 'row' }}>
         {[
-          { label: 'BPM ', value: tempBPM, setter: setTempBPM, min: 1, type: 'input' },
-          { label: 'BEAT ', value: n_beats, setter: setn_beats, min: 1, type: 'button' },
-          { label: 'DIV ', value: nth_partial, setter: setnth_partial, min: 1, type: 'button' }
+          { label: 'BPM [', value: bpm, setter: setBPM, min: 1, type: 'button' },
+          { label: 'BEAT [', value: n_beats, setter: setn_beats, min: 1, type: 'button' },
+          { label: 'DIV [', value: nth_partial, setter: setnth_partial, min: 1, type: 'button' }
         ].map((item, index) => (
-          <div key={index} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: '10px' }}>
+          <div key={index} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '10px', marginRight:'0px'}}>
             <span>{item.label}</span>
-            {item.type === 'input' ? (
-              <>
-                <input 
-                  type="number"
-                  value={item.value}
-                  onChange={(e) => item.setter(Number(e.target.value))}
-                  style={{ width: '50px', textAlign: 'center', marginRight: '10px' }}
-                />
-                <button onClick={() => setBPM(tempBPM)}>@</button>
-              </>
-            ) : (
-              <>
-                <button onClick={() => {
-                  if (item.value > item.min) {
-                    item.setter(prev => prev - 1);
-                  }
-                }}>-</button>
-                <div style={{ margin: '0 10px' }}>{item.value}</div>
-                <button onClick={() => item.setter(prev => prev + 1)}>+</button>
-              </>
-            )}
+            <button 
+              style={{ backgroundColor: 'blue', borderRadius: '50%', width: '10px', height: '10px', border: 'none' }}
+              onMouseDown={() => handleMouseDown('decrease')}
+              onMouseUp={handleMouseUp}
+              onClick={() => item.setter(prev => prev > item.min ? prev - 1 : prev)}
+            ></button>
+            <div style={{ margin: '0 5px' }}>{item.value}</div>
+            <button 
+              style={{ backgroundColor: 'red', borderRadius: '50%', width: '10px', height: '10px', border: 'none' }}
+              onMouseDown={() => handleMouseDown('increase')}
+              onMouseUp={handleMouseUp}
+              onClick={() => item.setter(prev => prev + 1)}
+            ></button>]
           </div>
         ))}
       </div>
