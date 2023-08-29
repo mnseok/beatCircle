@@ -31,7 +31,7 @@ export default function Home() {
         prevTimeRef.current = time;
       }
       const deltaTime = time - prevTimeRef.current;
-      const angleDelta = ((bpm / 60) * 360 * (deltaTime / 1000)) % 360;
+      const angleDelta = ((bpm / 60) * 360 * (deltaTime / 1000) / n_beats) % 360;
       setAngle((prevAngle) => (prevAngle + angleDelta) % 360);
 
       prevTimeRef.current = time;
