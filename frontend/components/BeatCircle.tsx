@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BeatButtons from "./InstrumentContainer/BeatButton";
 import {
   CircleContainer,
@@ -31,6 +31,7 @@ export function BeatCircle({
 }: BeatCircleProps): JSX.Element {
   const wrapperSize = radius * 2.5;
   const center = wrapperSize / 2;
+  const [tempBPM, setTempBPM] = useState(bpm);
 
   return (
     <div
@@ -66,19 +67,22 @@ export function BeatCircle({
 
       <div style={{ marginLeft: '20px', display: 'flex', flexDirection: 'row' }}>
         {[
-          { label: 'BPM:', value: bpm, setter: setBPM, min: 30, type: 'input' },
+          { label: 'BPM:', value: tempBPM, setter: setTempBPM, min: 30, type: 'input' },
           { label: 'BEAT:', value: n_beats, setter: setn_beats, min: 1, type: 'button' },
           { label: 'DIVISION:', value: nth_partial, setter: setnth_partial, min: 1, type: 'button' }
         ].map((item, index) => (
           <div key={index} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: '10px' }}>
             <span>{item.label}</span>
             {item.type === 'input' ? (
-              <input 
-                type="number"
-                value={item.value}
-                onChange={(e) => item.setter(Number(e.target.value))}
-                style={{ width: '50px', textAlign: 'center', marginRight: '10px' }}
-              />
+              <>
+                <input 
+                  type="number"
+                  value={item.value}
+                  onChange={(e) => item.setter(Number(e.target.value))}
+                  style={{ width: '50px', textAlign: 'center', marginRight: '10px' }}
+                />
+                <button onClick={() => setBPM(tempBPM)}>@</button>
+              </>
             ) : (
               <>
                 <button onClick={() => {

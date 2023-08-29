@@ -19,12 +19,10 @@ export default function Home() {
   const [n_beats, setn_beats] = useState(4); // 초기값은 4
   const [nth_partial, setnth_partial] = useState(4);
   const numButtons = n_beats * nth_partial;
-  const rotation_per_minute = (60 / bpm) * n_beats;
   const instruments = [
     "kick",
     "snare-drum",
     "hi-hat",
-    "low-floor-tom",
     "ride",
   ];
   const [angle, setAngle] = useState<number>(0);
@@ -36,7 +34,7 @@ export default function Home() {
         prevTimeRef.current = time;
       }
       const deltaTime = time - prevTimeRef.current;
-      const angleDelta = ((bpm / 60) * 360 * deltaTime * 0.001) % 360;
+      const angleDelta = ((bpm / (n_beats * 60)) * 360 * deltaTime * 0.001) % 360;
       setAngle((prevAngle) => (prevAngle + angleDelta) % 360);
 
       prevTimeRef.current = time;
@@ -45,7 +43,7 @@ export default function Home() {
 
     const animationFrameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [bpm]);
+  }, [bpm, n_beats]);
 
   return (
     <div
