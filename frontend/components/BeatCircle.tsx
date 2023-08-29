@@ -58,7 +58,7 @@ export function BeatCircle({
           numButtons={numButtons}
           center={center}
           roundRadius={radius}
-          activateButtonIndices={[0, 4, 8, 12]}
+          activateButtonIndices={[0, 4, 8, 12,16,20,24,28,32,36]}
           handleButtonClick={() => {}}
         ></BeatButtons>
         
@@ -67,9 +67,9 @@ export function BeatCircle({
 
       <div style={{ marginLeft: '20px', display: 'flex', flexDirection: 'row' }}>
         {[
-          { label: 'BPM:', value: tempBPM, setter: setTempBPM, min: 30, type: 'input' },
-          { label: 'BEAT:', value: n_beats, setter: setn_beats, min: 1, type: 'button' },
-          { label: 'DIVISION:', value: nth_partial, setter: setnth_partial, min: 1, type: 'button' }
+          { label: 'BPM ', value: tempBPM, setter: setTempBPM, min: 30, type: 'input' },
+          { label: 'BEAT ', value: n_beats, setter: setn_beats, min: 1, type: 'button' },
+          { label: 'DIV ', value: nth_partial, setter: setnth_partial, min: 1, type: 'button' }
         ].map((item, index) => (
           <div key={index} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: '10px' }}>
             <span>{item.label}</span>
