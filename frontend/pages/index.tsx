@@ -15,36 +15,81 @@ import { DndProvider } from "react-dnd";
 
 export default function Home() {
   const radius = 80;
-  const [bpm, setBPM] = useState(120); // 초기값은 120
+  const [bpm, setBPM] = useState<number>(10); // 초기값은 120
   const [n_beats, setn_beats] = useState(4); // 초기값은 4
   const [nth_partial, setnth_partial] = useState(4);
   const numButtons = n_beats * nth_partial;
   const rotation_per_minute = (60 / bpm) * n_beats;
-  const instruments = [
-    "kick",
-    "snare-drum",
-    "hi-hat",
-    "low-floor-tom",
-    "ride",
-  ];
+  const instruments = ["kick", "snare-drum", "hi-hat", "low-floor-tom", "ride"];
   const [angle, setAngle] = useState<number>(0);
   const prevTimeRef: React.MutableRefObject<number | undefined> = useRef();
 
+  // useEffect(() => {
+  //   console.log("bpm: ", bpm, "typeof bpm: ", typeof bpm);
+  //   const animate = (time: number) => {
+  //     if (!prevTimeRef.current) {
+  //       prevTimeRef.current = time;
+  //     }
+  //     const deltaTime = time - prevTimeRef.current;
+  //     const angleDelta = ((bpm / 60) * 360 * (deltaTime / 1000)) % 360;
+  //     setAngle((prevAngle) => (prevAngle + angleDelta) % 360);
+
+  //     prevTimeRef.current = time;
+  //     requestAnimationFrame(animate);
+  //   };
+
+  //   const animationFrameId = requestAnimationFrame(animate);
+  //   return () => cancelAnimationFrame(animationFrameId);
+  // }, [bpm]);
+
+  // useEffect(() => {
+  //   const animate = (time: number) => {
+  //     if (!prevTimeRef.current) {
+  //       prevTimeRef.current = time;
+  //     }
+  //     const deltaTime = time - prevTimeRef.current;
+  //     const angleDelta = ((bpm / 60) * 360 * (deltaTime / 1000)) % 360;
+  //     console.log(
+  //       "angleDelta: ",
+  //       angleDelta,
+  //       "angle: ",
+  //       angle,
+  //       "bpm: ",
+  //       bpm,
+  //       "deltaTime: ",
+  //       deltaTime
+  //     );
+  //     setAngle((prevAngle) => (prevAngle + angleDelta) % 360);
+
+  //     prevTimeRef.current = time;
+  //     requestAnimationFrame(animate);
+  //   };
+
+  //   const animationFrameId = requestAnimationFrame(animate);
+  //   return () => cancelAnimationFrame(animationFrameId);
+  // }, [bpm]);
+
+  const animateRef = useRef<FrameRequestCallback | null>(null);
+
   useEffect(() => {
-    const animate = (time: number) => {
+    animateRef.current = (time: number) => {
       if (!prevTimeRef.current) {
         prevTimeRef.current = time;
       }
       const deltaTime = time - prevTimeRef.current;
-      const angleDelta = ((bpm / 60) * 360 * deltaTime * 0.001) % 360;
+      const angleDelta = ((bpm / 60) * 360 * (deltaTime / 1000)) % 360;
       setAngle((prevAngle) => (prevAngle + angleDelta) % 360);
 
       prevTimeRef.current = time;
-      requestAnimationFrame(animate);
+      if (animateRef.current) {
+        requestAnimationFrame(animateRef.current);
+      }
     };
 
-    const animationFrameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrameId);
+    if (animateRef.current) {
+      const animationFrameId = requestAnimationFrame(animateRef.current);
+      return () => cancelAnimationFrame(animationFrameId);
+    }
   }, [bpm]);
 
   return (
@@ -57,11 +102,11 @@ export default function Home() {
     >
       <Header>
         <HeaderLeft>
-          <BeatCircle 
-            radius={20} 
-            numButtons={numButtons} 
-            angle={angle} 
-            bpm={bpm} 
+          <BeatCircle
+            radius={20}
+            numButtons={numButtons}
+            angle={angle}
+            bpm={bpm}
             setBPM={setBPM}
             n_beats={n_beats}
             setn_beats={setn_beats}
@@ -69,12 +114,9 @@ export default function Home() {
             setnth_partial={setnth_partial}
           />
         </HeaderLeft>
-        <HeaderCenter>
-          PUMPKIN
-        </HeaderCenter>
+        <HeaderCenter>PUMPKIN</HeaderCenter>
         <HeaderRight></HeaderRight>
       </Header>
-
       <Body>
         <DndProvider backend={HTML5Backend}>
           <InstrumentContainer
