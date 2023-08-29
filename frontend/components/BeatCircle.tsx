@@ -67,7 +67,7 @@ export function BeatCircle({
 
       <div style={{ marginLeft: '20px', display: 'flex', flexDirection: 'row' }}>
         {[
-          { label: 'BPM ', value: tempBPM, setter: setTempBPM, min: 30, type: 'input' },
+          { label: 'BPM ', value: tempBPM, setter: setTempBPM, min: 1, type: 'input' },
           { label: 'BEAT ', value: n_beats, setter: setn_beats, min: 1, type: 'button' },
           { label: 'DIV ', value: nth_partial, setter: setnth_partial, min: 1, type: 'button' }
         ].map((item, index) => (
