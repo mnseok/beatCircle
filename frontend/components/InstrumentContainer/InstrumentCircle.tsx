@@ -59,7 +59,7 @@ export function InstrumentCircle({
   });
 
   const collidedButtonIndex = activateButtonIndices.filter((index) => {
-    return Math.abs(angle - (index / numButtons) * 360) < 5;
+    return Math.abs(angle - (index / numButtons) * 360) < 3;
   });
   const dotOnClicked: boolean = collidedButtonIndex.length > 0 && !isCollided;
   const roundRadius = isCollided ? radius * 1.05 : radius;
