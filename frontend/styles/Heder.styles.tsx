@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Header = styled.div`
-  height: 10vh;
+  height: 15vh;
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -29,7 +29,7 @@ export const HeaderCenter = styled.div`
   align-items: center;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   // border: 1px solid orange;
 `;
 

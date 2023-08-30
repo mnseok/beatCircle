@@ -31,7 +31,8 @@ export default function Home() {
         prevTimeRef.current = time;
       }
       const deltaTime = time - prevTimeRef.current;
-      const angleDelta = ((bpm / 60) * 360 * (deltaTime / 1000) / n_beats) % 360;
+      const angleDelta =
+        (((bpm / 60) * 360 * (deltaTime / 1000)) / n_beats) % 360;
       setAngle((prevAngle) => (prevAngle + angleDelta) % 360);
 
       prevTimeRef.current = time;
@@ -57,7 +58,7 @@ export default function Home() {
       <Header>
         <HeaderLeft>
           <BeatCircle
-            radius={20}
+            radius={40}
             numButtons={numButtons}
             angle={angle}
             bpm={bpm}
@@ -68,7 +69,9 @@ export default function Home() {
             setnth_partial={setnth_partial}
           />
         </HeaderLeft>
-        <HeaderCenter>PUMPKIN</HeaderCenter>
+        <HeaderCenter>
+          C&nbsp;U&nbsp;C&nbsp;U&nbsp;M&nbsp;B&nbsp;E&nbsp;R
+        </HeaderCenter>
         <HeaderRight></HeaderRight>
       </Header>
       <Body>

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import InstrumentSelectButton from "./InstrumentSelectButton";
 
 import { Instrument } from "@/types/instrument.type";
